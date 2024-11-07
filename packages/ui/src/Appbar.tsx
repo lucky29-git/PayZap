@@ -1,5 +1,5 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { Button } from './button'
+import { Button } from '@repo/ui'
 
 interface AppbarProps{
     user?: {
