@@ -10,7 +10,7 @@ jobs:
     name: Build the project 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/chekout@v4
+      - uses: actions/chekout@v3
 
       - name: Use Node.js
         uses: actions/setup-node@v3
