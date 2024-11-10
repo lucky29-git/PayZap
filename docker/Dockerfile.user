@@ -8,7 +8,7 @@ COPY apps ./apps
 COPY packages ./packages
 
 RUN npm install 
-RUN npm db:generate
+RUN npm run db:generate
 
 RUN npm run build
 
