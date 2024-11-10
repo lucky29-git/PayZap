@@ -18,7 +18,7 @@ export const Appbar = ({
 
     const session = useSession()
     
-    return <div className="flex justify-between border-b px-4">
+    return <div className="flex justify-between border-b px-4 pb-2">
     <div className="text-lg flex flex-col justify-center">
         PayZap
     </div>

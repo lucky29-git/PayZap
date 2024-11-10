@@ -9,7 +9,7 @@ export default function Home() {
   const session = useSession()
   return (
     <div>
-      <Appbar onSignin={signIn} onSignout={signOut} user={session.data?.user}></Appbar>
+      {/* <Appbar onSignin={signIn} onSignout={signOut} user={session.data?.user}></Appbar> */}
 
     </div>
   );
