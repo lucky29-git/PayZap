@@ -80,7 +80,6 @@ Learn more about the power of Turborepo:
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
 
-
 ## Added git CI/CD pipeline 
 
 git workflows are added in this repo to get benifits of linting and prettier.
