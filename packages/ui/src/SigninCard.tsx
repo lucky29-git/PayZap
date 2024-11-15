@@ -13,7 +13,7 @@ export const SigninCard = () => {
     const session = useSession()
 
     return <div className="flex items-center justify-center h-screen">
-        <div className="flex flex-col justify-center items-center gap-4 p-4 border rounded max-w-sm  w-full"> 
+        <div className="flex flex-col justify-center items-center gap-4 p-4 border-2 rounded max-w-sm  w-full"> 
             <h1 className="text-2xl">PayZap</h1>      
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <label htmlFor="email">Phone number</label>
