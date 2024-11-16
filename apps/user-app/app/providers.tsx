@@ -12,7 +12,7 @@ export const Providers = ({children} : {
     return <RecoilRoot>
     <SessionProvider>
         
-                <SidebarProvider>
+                {/* <SidebarProvider>
                     <div className='w-full fixed'>
                         <div className=' w-full '>
                             <AppbarClient/>
@@ -28,7 +28,8 @@ export const Providers = ({children} : {
                         </div>
                         
                     </div>
-                </SidebarProvider>
+                </SidebarProvider> */}
+                {children}
            
     </SessionProvider>
     </RecoilRoot>
