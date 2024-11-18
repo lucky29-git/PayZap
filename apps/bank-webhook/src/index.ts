@@ -3,8 +3,9 @@ import express from "express"
 import db from "@repo/db/client"
 
 const app = express()
+app.use(express.json())
 
-app.post("hdfcWebhook", async (req, res) => {
+app.post("/hdfcWebhook", async (req, res) => {
     // TODO: add zod validation
     // check if txn actually came from hdfc bank ( TODO add middleware to check )
     const paymentInformation: {
@@ -18,14 +19,24 @@ app.post("hdfcWebhook", async (req, res) => {
     };
     // Update bal in db, add txn
     try{
+        console.log( "Amount from webhook: " + paymentInformation.amount);
         await db.$transaction([
-            db.balance.updateMany({
+            db.balance.upsert({
                 where: {
                     userId: Number(paymentInformation.userId)
                 }, 
-                data: {
+                update: {
                     amount: {
                         increment: Number(paymentInformation.amount)        // using increment instead of updating bal by adding in it, to prevent raceCondition if two req came very quickly 
+                    }
+                },
+                create: {
+                    amount: Number(paymentInformation.amount),
+                    locked: 0,
+                    user: {
+                        connect: {
+                            id: Number(paymentInformation.userId)
+                        }
                     }
                 }
             }),

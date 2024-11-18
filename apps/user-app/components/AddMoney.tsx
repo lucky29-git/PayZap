@@ -3,10 +3,13 @@ import { Button, CardContent, CardFooter, CardHeader, CardTitle, Input, Label, S
 import { Card } from "@repo/ui";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { createOnRampTxn } from "../app/lib/actions/createOnRampTxn";
 
 
 export default function AddMoneyCard(){
     const [redirectURl, setRedirectURL] = useState("")
+    const [amount, setAmount] = useState(0)
+    const [provider, setProvider] = useState("HDFC")
     const router = useRouter()
 
     return <div >
@@ -18,11 +21,14 @@ export default function AddMoneyCard(){
                 <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5">
                         <Label>Amount</Label>
-                        <Input type="number" placeholder="Amount"/>
+                        <Input type="number" placeholder="Amount" onChange= {(e : React.ChangeEvent<HTMLInputElement>) => {setAmount(Number(e.target.value))} }/>
                     </div>
                     <div className="flex flex-col space-y-1.5">
                         <Label>Bank</Label>
-                        <Select onValueChange={(val) => {setRedirectURL(val)}}>
+                        <Select onValueChange={(val) => {
+                            setRedirectURL(val)
+                            setProvider(val)
+                            }}>
                             <SelectTrigger >
                                 <SelectValue placeholder="Select" />
                             </SelectTrigger>
@@ -35,9 +41,10 @@ export default function AddMoneyCard(){
                 </div>
             </CardContent>
             <CardFooter className="flex flex-col items-center ">
-                <Button onClick={() => {
+                <Button onClick={ async () => {
                     router.push(redirectURl)
-                }} >Add money</Button>
+                    await createOnRampTxn(amount, provider )
+                }}>Add money</Button>
             </CardFooter>
         </Card>
     </div>
