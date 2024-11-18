@@ -1,4 +1,4 @@
-import { Home, Clock3, ArrowLeftRight } from "lucide-react"
+import { Home, Clock3, ArrowLeftRight, ChevronsLeftRight } from "lucide-react"
 import { 
     Sidebar,
   SidebarContent,
@@ -26,6 +26,11 @@ const items = [
         title: "Transactions",
         url: "transactions",
         icon: Clock3
+    },
+    {
+        title: "P2P transfer",
+        url: "p2p",
+        icon: ChevronsLeftRight
     }
 ]
 
