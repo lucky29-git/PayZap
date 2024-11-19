@@ -5,9 +5,9 @@ import { authOptions } from "../auth"
 import prisma from "@repo/db/client"
 
 export async function p2pSendMoney(to: string, amount: number){
+    console.log("hello from p2pSendmoney");
     const session = await getServerSession(authOptions)
     const userId = session?.user?.id
-
     if(!userId){
         return "Error while sending money"
     }
@@ -34,7 +34,7 @@ export async function p2pSendMoney(to: string, amount: number){
 
         await trxn.balance.update({
             where: {
-                userId: Number(to)
+                userId: Number(userId)
             },
             data:{
                 amount: {
@@ -45,7 +45,7 @@ export async function p2pSendMoney(to: string, amount: number){
 
         await trxn.balance.update({
             where:{
-                userId: Number(to)
+                userId: Number(toUser.id)
             },
             data: {
                 amount: {
@@ -53,8 +53,14 @@ export async function p2pSendMoney(to: string, amount: number){
                 }
             }
         })
+
+        await prisma.p2PTransfers.create({
+            data: {
+                amount: amount,
+                timeStamp: new Date(),
+                fromUserId: Number(userId),
+                toUserId: Number(toUser.id)
+            }
+        })
     })
-
-    
-
 }
