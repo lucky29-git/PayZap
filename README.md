@@ -1,25 +1,52 @@
-# Turborepo starter
+# PayZap
 
-This is an official starter Turborepo.
+PayZap is a payment application that allows users to manage wallets, perform peer-to-peer (P2P) transfers, and track transactions efficiently.
 
-## Using this example
 
-Run the following command:
 
-```sh
-npx create-turbo@latest
-```
 
-## What's inside?
+## Features
+
+- Wallet 
+- Peer to peer transactions
+- Transactions details ( Processing, success and failure of transaction)
+- Balance management 
+
+
+## Screenshots
+
+![payZap-c4-1](https://github.com/user-attachments/assets/1f373095-b79f-4876-b696-30485406b7b5)
+![payZap-c4-2-new](https://github.com/user-attachments/assets/ba69cc36-1435-4735-bc99-28dc86feb325)
+
+
+## Tech Stack
+
+**TurboRepo** 
+
+**User application:** Nextjs (FE & BE), PostgreSQL, Prisma ORM, Recoil, TailwindCSS, Shadcn UI
+
+**Bank Webhook handler:** Node, Express
+
+
+## Documentation
+
+**What's inside ?**
 
 This Turborepo includes the following packages/apps:
 
-### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `user-app`: a [Next.js](https://nextjs.org/) app
+
+- `merchant-app`: another [Next.js](https://nextjs.org/) app
+
+- `bank-webhook`: a Express app
+
+- `@repo/ui`: a database package shared by both `user-app` and `merchant-app` applications
+
+- `@repo/db`: a stub React component library shared by both `user-app` and `merchant-app` applications
+
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -31,6 +58,7 @@ This Turborepo has some additional tools already setup for you:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+
 
 ### Build
 
